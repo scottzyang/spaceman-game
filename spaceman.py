@@ -33,7 +33,7 @@ def is_word_guessed(secret_word, letters_guessed):
         if letter in letters_guessed:
             return True
         else:
-            return False
+            return False 
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
