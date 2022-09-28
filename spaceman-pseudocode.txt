@@ -1,0 +1,101 @@
+IMPORT random module 
+
+DECLARE variable to store word.txt file
+OPEN word.txt file with 'read-only' privileges
+
+READ all text from the file and store into a string
+SPLIT string into a list separated by space
+
+DECLARE a variable and use random.choice to select a random word from list
+
+DISPLAY placeholder string that correlate to length of selected word
+
+DECLARE a counter variable to a value of 7
+
+WHILE counter variable is greater than 0
+
+PROMPT user for letter guess
+GET user guess
+
+LOOP through the random selected word and see if the user guess matches
+
+IF user guess matches with a letter in the selected word
+    Display "Match found!"
+    OBTAIN the index of the matched words
+    update placeholder string with matching letters included
+    Reduce counter variable by one
+    Display "You have {counter variable} guesses left!"
+ELSE if user guess does NOT match a letter in the selected word
+    Display "No Matches found!"
+    Leave placeholder spots blank
+    Reduce counter variable by one
+    Display "You have {counter variable} guesses left!"
+
+END IF
+
+END LOOP
+
+
+------------------------------------------------------------------------------------
+
+IMPORT random module 
+
+DECLARE variable to store word.txt file
+OPEN word.txt file with 'read-only' privileges
+
+READ all text from the file and store into a string
+SPLIT string into a list separated by space
+
+DECLARE a variable and use random.choice to select a random word from list
+
+DISPLAY placeholder string that correlate to length of selected word
+
+DEFINE function1 that takes the random word and list of strings that have been guessed
+    LOOP through secret word
+        IF letters in secret word exist in list of letters guessed
+            RETURN TRUE
+        ELSE 
+            Return False    
+    
+
+DEFINE function2 that takes in random word and list of strings that have been guessed
+    LOOP through the random word 
+        IF letters in random word match letter guess
+            DISPLAY letter guessed in correct index of secret word, leave unguessed letters as _
+        ELSE
+            LEAVE placeholder as underscores
+        END IF ELSE
+
+DEFINE function3 that takes a guess, and the random word as arguments
+    LOOP through the random word to check user guess exists
+        IF yes 
+            return TRUE
+        ELSE 
+            return False
+        END IF ELSE
+
+DEFINE spaceman function that takes random word as arguments
+    DISPLAY information about the game and how to play
+    PROMPT User for a letter guess
+        GET letter guess
+
+    DECLARE counter at 0
+    FOR loop to 7
+        DECLARE guesses variable, assign to 7 minus counter (amount of guesses left)
+        DISPLAY guesses variable 
+        CALL function3 to check if letter exists
+            IF function3 returns TRUE
+                DISPLAY "You guessed correctly!"
+                reduce guesses variable by 1
+            ELSE 
+                DISPLAY "Incorrect Guess!"
+                reduce guesses variable by 1
+        CALL function2 to display current word so far
+        CALL function1 to check if game has been won
+            IF function1 returns TRUE
+                DISPLAY "You win!"
+            ELSE
+                Continue with the loop
+
+
+
