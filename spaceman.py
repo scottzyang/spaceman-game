@@ -48,8 +48,15 @@ def get_guessed_word(secret_word, letters_guessed):
     '''
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-
-    pass
+    word_status = ''
+    
+    for letter in secret_word:
+        if letter in letters_guessed:
+            word_status += letter
+            print(word_status)
+        else:
+            word_status += '_'
+            
 
 
 def is_guess_in_word(guess, secret_word):
