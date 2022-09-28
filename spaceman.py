@@ -56,6 +56,7 @@ def get_guessed_word(secret_word, letters_guessed):
             print(word_status)
         else:
             word_status += '_'
+            print(word_status)
             
 
 
