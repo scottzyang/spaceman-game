@@ -1,4 +1,5 @@
 from asyncio import format_helpers
+from json import load
 from operator import truediv
 import random
 import os
@@ -100,7 +101,6 @@ def is_guess_in_word(guess, secret_word):
         print("Incorrect guess!")
         return False
 
-
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
@@ -109,14 +109,15 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
 
     '''
-    guesses = 25
     letters_guessed = ''
+    guesses = 7
 
     #TODO: show the player information about the game according to the project spec
     print("Welcome to Spaceman! We will select a random word, and you'll have 7 letter guesses to complete the word")
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    while (guesses > 0):
+    #while (guesses > 0):
+    for level in range(7):
         print(f"You have {guesses} guesses left!")
         guess = input(f"Input your guess here: ")
         guesses -= 1
@@ -129,7 +130,7 @@ def spaceman(secret_word):
     #TODO: show the guessed word so far
         print(get_guessed_word(secret_word, letters_guessed))
 
-        
+
 
 #These function calls that will start the game
 secret_word = load_word()
