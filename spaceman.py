@@ -126,12 +126,10 @@ def spaceman(secret_word):
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
         is_guess_in_word(guess, secret_word)
 
+    #TODO: show the guessed word so far
+        print(get_guessed_word(secret_word, letters_guessed))
 
         
-
-
-
-
 
 #These function calls that will start the game
 secret_word = load_word()
