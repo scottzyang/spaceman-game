@@ -123,6 +123,9 @@ def spaceman(secret_word):
         letters_guessed += guess
         os.system('clear')
         
+    #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+        is_guess_in_word(guess, secret_word)
+
 
         
 
