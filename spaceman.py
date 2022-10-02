@@ -152,7 +152,7 @@ def spaceman(secret_word):
     '''
     letters_guessed = ''
     guesses = 7
-    rounds = 0
+    rounds = 1
     number_incorrect = 0
 
     #TODO: show the player information about the game according to the project spec
