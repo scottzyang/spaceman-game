@@ -140,11 +140,11 @@ def spaceman(secret_word):
     number_incorrect = 0
 
     #TODO: show the player information about the game according to the project spec
-    print("Welcome to Spaceman! We will select a random word, and you'll have 7 letter guesses to complete the word")
+    print("Welcome to Spaceman! We will select a random word, and you must not get 7 incorrect guesses!")
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     while (guesses > 0):
-        print(f"Round {rounds} ##################\nYou have {guesses} guesses left!")
+        print(f"Round {rounds}\nYou have {guesses} guesses left!")
         user_input = True
         while user_input:
             guess = input(f"Input your guess here: ")
