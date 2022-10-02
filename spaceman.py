@@ -105,6 +105,7 @@ def is_guess_in_word(guess, secret_word):
 def restart_game():
     play_again = input("Would you like to play again? (yes or no) ")
     if play_again == "yes":
+        os.system('clear')
         secret_word = load_word()
         spaceman(secret_word)
         return False
@@ -140,7 +141,17 @@ def spaceman(secret_word):
     number_incorrect = 0
 
     #TODO: show the player information about the game according to the project spec
-    print("Welcome to Spaceman! We will select a random word, and you must not get 7 incorrect guesses!")
+    print("Welcome to Spaceman!")
+    instructions = input("Would you like instructions on how to play? (yes or no): ")
+    if instructions == 'yes':
+        print("\nWe will select a random word, and you will input a single letter guess at a time\nto try and figure out the word. You only get 7 incorrect guesses\nbefore the game ends, so make sure you choose wisely!")
+        play_time = input('\nReady to play? (yes or no): ')
+        if play_time == 'no':
+            return
+        else:
+            os.system('clear')
+    else:
+        os.system('clear')
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     while (guesses > 0):
