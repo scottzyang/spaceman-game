@@ -136,7 +136,7 @@ def ascii_art(level):
         4: ' o\n/|\\\n',
         5: ' o\n/|\\\n  \\\n',
         6: ' o\n/|\\\n/ \\\n',
-        7: ' o\n/|\\\n/ \\\n:( GAME OVER'
+        7: ' o\n/|\\\n/ \\\n:( GAME OVER\n'
 
     }
     return spaceman_drawing[level]
