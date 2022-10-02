@@ -112,26 +112,17 @@ def restart_game():
         return False
 
 def ascii_art(level):
-    if level == 0:
-        print(' o\n')
-    elif level == 1:
-        print(' o\n  \\\n')
-    elif level == 2:
-        print(' o\n |\\\n')
-    elif level == 3:
-        print(' o\n/|\\\n')
-    elif level == 4:
-        print(' o\n/|\\\n  \\\n')
-    elif level == 5:
-        print(' o\n/|\\\n/ \\\n')
-    else:
-        print(' o\n/|\\\n/ \\\n:(')
-    '''
-     o\n`
-    /|\\\n
-    / \\\n   
-    :(
-    '''
+    spaceman_drawing = {
+        1: ' o\n',
+        2: ' o\n  \\\n',
+        3: ' o\n |\\\n',
+        4: ' o\n/|\\\n',
+        5: ' o\n/|\\\n  \\\n',
+        6: ' o\n/|\\\n/ \\\n',
+        7: ' o\n/|\\\n/ \\\n:( GAME OVER'
+
+    }
+    return spaceman_drawing[level]
 
 
 def spaceman(secret_word):
@@ -144,14 +135,15 @@ def spaceman(secret_word):
     '''
     letters_guessed = ''
     guesses = 7
+    rounds = 0
+    number_incorrect = 0
 
     #TODO: show the player information about the game according to the project spec
     print("Welcome to Spaceman! We will select a random word, and you'll have 7 letter guesses to complete the word")
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    #while (guesses > 0):
-    for level in range(7):
-        print(f"You have {guesses} guesses left!")
+    while (guesses > 0):
+        print(f"Round {rounds} ------------------\nYou have {guesses} guesses left!")
         guess = input(f"Input your guess here: ")
         letters_guessed += guess
         os.system('clear')
@@ -159,21 +151,28 @@ def spaceman(secret_word):
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
         if not is_guess_in_word(guess, secret_word):
             guesses -= 1
+            number_incorrect += 1
+            print(ascii_art(number_incorrect))
+        else:
+            print(ascii_art(number_incorrect))
 
     #TODO: show the guessed word so far
-        ascii_art(level)
+        #ascii_art(level)
         print(get_guessed_word(secret_word, letters_guessed))
 
     #TODO: check if the game has been won or lost
         if (is_word_guessed(secret_word, letters_guessed)):
-            print(f"Congrats! You completed the word with {guesses} guesses remaining. The word was {secret_word}.")
+            print(f"Congrats! You completed the word with {guesses} guesses remaining. The word was '{secret_word}'.")
             if (restart_game()):
                 continue
             else:
                 return
 
+        # increment the round value to keep track of rounds
+        rounds += 1
+
     ## outside of for loop
-    print(f"You have {guesses} guesses left! Please try again!")
+    print(f"You have {guesses} guesses left! The word was '{secret_word}'. Please try again!")
     restart_game()
 
 
