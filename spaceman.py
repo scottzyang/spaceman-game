@@ -153,12 +153,12 @@ def spaceman(secret_word):
     for level in range(7):
         print(f"You have {guesses} guesses left!")
         guess = input(f"Input your guess here: ")
-        guesses -= 1
         letters_guessed += guess
         os.system('clear')
         
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-        is_guess_in_word(guess, secret_word)
+        if not is_guess_in_word(guess, secret_word):
+            guesses -= 1
 
     #TODO: show the guessed word so far
         ascii_art(level)
