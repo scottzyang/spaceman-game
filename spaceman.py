@@ -111,6 +111,28 @@ def restart_game():
     else:
         return False
 
+def ascii_art(level):
+    if level == 0:
+        print(' o\n')
+    elif level == 1:
+        print(' o\n  \\\n')
+    elif level == 2:
+        print(' o\n |\\\n')
+    elif level == 3:
+        print(' o\n/|\\\n')
+    elif level == 4:
+        print(' o\n/|\\\n  \\\n')
+    elif level == 5:
+        print(' o\n/|\\\n/ \\\n')
+    else:
+        print(' o\n/|\\\n/ \\\n:(')
+    '''
+     o\n`
+    /|\\\n
+    / \\\n   
+    :(
+    '''
+
 
 def spaceman(secret_word):
     '''
@@ -139,9 +161,9 @@ def spaceman(secret_word):
         is_guess_in_word(guess, secret_word)
 
     #TODO: show the guessed word so far
+        ascii_art(level)
         print(get_guessed_word(secret_word, letters_guessed))
 
-    
     #TODO: check if the game has been won or lost
         if (is_word_guessed(secret_word, letters_guessed)):
             print(f"Congrats! You completed the word with {guesses} guesses remaining. The word was {secret_word}.")
