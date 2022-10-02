@@ -12,11 +12,17 @@ def load_word():
     Returns: 
            string: The secret word to be used in the spaceman guessing game
     '''
+    # open words.txt file to read only
     f = open('words.txt', 'r')
+
+    # read lines from file into words_list variable
     words_list = f.readlines()
     f.close()
     
+    # split the words list by the space
     words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
+
+    # select a random word from list
     secret_word = random.choice(words_list)
     return secret_word
 
@@ -40,7 +46,7 @@ def is_word_guessed(secret_word, letters_guessed):
     # loop through each letter of the secret word
     while (is_letter_guessed == True):
         for letter in secret_word: 
-            # if letter is found in the letters guessed, continue the loop
+            # if letter is found in the letters guessed, continue the while loop
             if letter in letters_guessed:
                 is_letter_guessed = True
             else:
@@ -72,10 +78,13 @@ def get_guessed_word(secret_word, letters_guessed):
     # the letters that have not been guessed yet
     word_status = ''
     
+    # loop through each letter in the secret word
     for letter in secret_word:
+        # if the letter exists in the letters guessed list, add that letter to the empty string
         if letter in letters_guessed:
             word_status += letter
         else:
+            # if it does not exist, replace it with the _
             word_status += '_'
     return(word_status)
             
@@ -103,16 +112,22 @@ def is_guess_in_word(guess, secret_word):
 
 # function to restart game
 def restart_game():
+    # prompt if user wants to play again
     play_again = input("Would you like to play again? (yes or no) ")
+    # if yes, clear the console, and call following functions to restart the game
     if play_again == "yes":
         os.system('clear')
         secret_word = load_word()
         spaceman(secret_word)
+        # If user chooses to not continue, call stack returns here and returns false to end game
         return False
     else:
+        # if no, return false to end the game
         return False
 
+# function to draw the spaceman figure
 def ascii_art(level):
+    #dictionary containing key-value pairs with a drawing
     spaceman_drawing = {
         0: '',
         1: ' o\n',
@@ -142,45 +157,63 @@ def spaceman(secret_word):
 
     #TODO: show the player information about the game according to the project spec
     print("Welcome to Spaceman!")
+
+    # prompt user for instructions
     instructions = input("Would you like instructions on how to play? (yes or no): ")
     if instructions == 'yes':
         print("\nWe will select a random word, and you will input a single letter guess at a time\nto try and figure out the word. You only get 7 incorrect guesses\nbefore the game ends, so make sure you choose wisely!")
+        # prompt user if they are ready to play
         play_time = input('\nReady to play? (yes or no): ')
+        # if no, end the game
         if play_time == 'no':
             return
         else:
+            # if yes, clear the console and start game
             os.system('clear')
     else:
+        # is user opts for no instructions, clear the console and start game
         os.system('clear')
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
+
+    # continue while guesses are greater than 0
     while (guesses > 0):
         print(f"Round {rounds}\nYou have {guesses} guesses left!")
         user_input = True
+
+        # evaluate validity of guess
         while user_input:
             guess = input(f"Input your guess here: ")
+            # if letter has been guessed, reprompt user
             if guess in letters_guessed:
                 print('Letter already guessed!')
+            # if letter has not, add letter to the letters_guessed string, and stop the loop/continue game
             else:
                 letters_guessed += guess
                 user_input = False
         os.system('clear')
         
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+        # if guess is not in secret word
         if not is_guess_in_word(guess, secret_word):
+            # decrease guesses by 1
             guesses -= 1
+            # increment number incorrect by 1
             number_incorrect += 1
+            # pass number_incorrect as key and return the value, value is the ascii art of spaceman
             print(ascii_art(number_incorrect))
         else:
+            # if correct, print nothing for ascii art
             print(ascii_art(number_incorrect))
 
     #TODO: show the guessed word so far
-        #ascii_art(level)
+        # display the current guessed word and blank spaces
         print(get_guessed_word(secret_word, letters_guessed))
 
     #TODO: check if the game has been won or lost
         if (is_word_guessed(secret_word, letters_guessed)):
             print(f"Congrats! You completed the word with {guesses} guesses remaining. The word was '{secret_word}'.")
+            # if user chooses to restart, continue. Else end game
             if (restart_game()):
                 continue
             else:
@@ -191,6 +224,7 @@ def spaceman(secret_word):
 
     ## outside of for loop
     print(f"You have {guesses} guesses left! The word was '{secret_word}'. Please try again!")
+    #reprompt user if they want to play again
     restart_game()
 
 
