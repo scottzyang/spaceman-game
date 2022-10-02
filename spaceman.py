@@ -101,6 +101,17 @@ def is_guess_in_word(guess, secret_word):
         print("Incorrect guess!")
         return False
 
+# function to restart game
+def restart_game():
+    play_again = input("Would you like to play again? (yes or no) ")
+    if play_again == "yes":
+        secret_word = load_word()
+        spaceman(secret_word)
+        return False
+    else:
+        return False
+
+
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
@@ -130,6 +141,18 @@ def spaceman(secret_word):
     #TODO: show the guessed word so far
         print(get_guessed_word(secret_word, letters_guessed))
 
+    
+    #TODO: check if the game has been won or lost
+        if (is_word_guessed(secret_word, letters_guessed)):
+            print(f"Congrats! You completed the word with {guesses} guesses remaining. The word was {secret_word}.")
+            if (restart_game()):
+                continue
+            else:
+                return
+
+    ## outside of for loop
+    print(f"You have {guesses} guesses left! Please try again!")
+    restart_game()
 
 
 #These function calls that will start the game
