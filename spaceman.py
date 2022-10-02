@@ -113,6 +113,7 @@ def restart_game():
 
 def ascii_art(level):
     spaceman_drawing = {
+        0: '',
         1: ' o\n',
         2: ' o\n  \\\n',
         3: ' o\n |\\\n',
@@ -143,9 +144,15 @@ def spaceman(secret_word):
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
     while (guesses > 0):
-        print(f"Round {rounds} ------------------\nYou have {guesses} guesses left!")
-        guess = input(f"Input your guess here: ")
-        letters_guessed += guess
+        print(f"Round {rounds} ##################\nYou have {guesses} guesses left!")
+        user_input = True
+        while user_input:
+            guess = input(f"Input your guess here: ")
+            if guess in letters_guessed:
+                print('Letter already guessed!')
+            else:
+                letters_guessed += guess
+                user_input = False
         os.system('clear')
         
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
