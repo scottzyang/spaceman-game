@@ -44,7 +44,7 @@ def is_word_guessed(secret_word, letters_guessed):
     is_letter_guessed = True
 
     # loop through each letter of the secret word
-    while (is_letter_guessed == True):
+    while (is_letter_guessed):
         for letter in secret_word: 
             # if letter is found in the letters guessed, continue the while loop
             if letter in letters_guessed:
