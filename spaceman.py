@@ -189,7 +189,7 @@ def spaceman(secret_word):
                 print('Invalid guess, try again!')
             # if letter has been guessed, reprompt user
             elif guess in letters_guessed:
-                print('Letter already guessed!')
+                print('\nLetter already guessed!')
             # if letter has not, add letter to the letters_guessed string, and stop the loop/continue game
             else:
                 letters_guessed += guess
