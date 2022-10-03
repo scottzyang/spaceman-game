@@ -58,7 +58,6 @@ def get_guessed_word(secret_word, letters_guessed):
     for letters that have not been guessed yet.
 
 
-
     Args: 
         secret_word (string): the random word the user is trying to guess.
         letters_guessed (list of strings): list of letters that have been guessed so far.
@@ -122,7 +121,12 @@ def restart_game():
         return False
 
 # function to draw the spaceman figure
-def ascii_art(level):
+def ascii_art(number_incorrect):
+    '''
+    creates a dictionary containing strings with ascii_art 
+    returns the value depending on the levl
+    '''
+
     #dictionary containing key-value pairs with a drawing
     spaceman_drawing = {
         0: '',
@@ -135,7 +139,7 @@ def ascii_art(level):
         7: ' o\n/|\\\n/ \\\n:( GAME OVER\n'
 
     }
-    return spaceman_drawing[level]
+    return spaceman_drawing[number_incorrect]
 
 
 def spaceman(secret_word):
