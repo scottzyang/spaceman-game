@@ -107,6 +107,19 @@ def is_guess_in_word(guess, secret_word):
 
 # function to restart game
 def restart_game():
+    '''
+    prompts the user if they would like to play again
+        if yes: select a new word and restart the game
+        if no: end the game
+
+    Args:
+        none: 
+    
+    Returns:
+        A boolean that would end the game
+
+    '''
+
     # prompt if user wants to play again
     play_again = input("Would you like to play again? (yes or no) ")
     # if yes, clear the console, and call following functions to restart the game
@@ -124,7 +137,12 @@ def restart_game():
 def ascii_art(number_incorrect):
     '''
     creates a dictionary containing strings with ascii_art 
-    returns the value depending on the levl
+
+    Args: 
+        number_incorrect: an integer that represents the number of incorrect guesses
+
+    Returns:
+         value from dictionary using the number_incorrect as the key
     '''
 
     #dictionary containing key-value pairs with a drawing
@@ -156,6 +174,7 @@ def spaceman(secret_word):
     number_incorrect = 0
 
     #TODO: show the player information about the game according to the project spec
+    os.system("clear")
     print("Welcome to Spaceman!")
 
     # prompt user for instructions
