@@ -104,10 +104,10 @@ def is_guess_in_word(guess, secret_word):
     '''
     #TODO: check if the letter guess is in the secret word
     if guess in secret_word:
-        print("Correct guess!")
+        print("Correct guess!\n")
         return True
     else:
-        print("Incorrect guess!")
+        print("Incorrect guess!\n")
         return False
 
 # function to restart game
