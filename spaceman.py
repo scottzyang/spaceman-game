@@ -183,14 +183,14 @@ def spaceman(secret_word):
         print("\nWe will select a random word, and you will input a single letter guess at a time\nto try and figure out the word. You only get 7 incorrect guesses\nbefore the game ends, so make sure you choose wisely!")
         # prompt user if they are ready to play
         play_time = input('\nReady to play? (yes or no): ')
-        # if no, end the game
+        # end the game
         if play_time == 'no':
             return
         else:
-            # if yes, clear the console and start game
+            # clear the console and start game
             os.system('clear')
     else:
-        # is user opts for no instructions, clear the console and start game
+        # if user opts for no instructions, clear the console and start game
         os.system('clear')
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
