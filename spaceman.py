@@ -51,7 +51,6 @@ def is_word_guessed(secret_word, letters_guessed):
                 is_letter_guessed = True
             else:
                 # if letter is not in letters guessed, return false to the function
-                is_letter_guessed = False
                 return False
         # If each letter is found, return true to the function
         return True
@@ -186,7 +185,7 @@ def spaceman(secret_word):
             guess = input(f"Input your guess here: ")
             # if user guess is not a letter or is more than one character, reprompt
             if not guess.isalpha() or len(guess) > 1:
-                print('Invalid guess, try again!')
+                print('\nInvalid guess, try again!')
             # if letter has been guessed, reprompt user
             elif guess in letters_guessed:
                 print('\nLetter already guessed!')
@@ -216,7 +215,7 @@ def spaceman(secret_word):
 
     #TODO: check if the game has been won or lost
         if (is_word_guessed(secret_word, letters_guessed)):
-            print(f"Congrats! You completed the word with {guesses} guesses remaining. The word was '{secret_word}'.")
+            print(f"\nCongrats! You completed the word with {guesses} guesses remaining. The word was '{secret_word}'.")
             # if user chooses to restart, continue. Else end game
             if (restart_game()):
                 continue
@@ -227,7 +226,7 @@ def spaceman(secret_word):
         rounds += 1
 
     ## outside of for loop
-    print(f"You have {guesses} guesses left! The word was '{secret_word}'. Please try again!")
+    print(f"\nYou have {guesses} guesses left! The word was '{secret_word}'. Please try again!")
     #reprompt user if they want to play again
     restart_game()
 
