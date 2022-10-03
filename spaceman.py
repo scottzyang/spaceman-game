@@ -1,3 +1,4 @@
+#pylint: disable=missing-module-docstring
 import random
 import os
 
@@ -5,44 +6,40 @@ def load_word():
     '''
     A function that reads a text file of words and randomly selects one to use as the secret word
         from the list.
-
-    Returns: 
-           string: The secret word to be used in the spaceman guessing game
+    Returns:
+        string: The secret word to be used in the spaceman guessing game
     '''
     # open words.txt file to read only
-    f = open('words.txt', 'r')
+    file = open('words.txt', 'r') #pylint: disable=unspecified-encoding
 
     # read lines from file into words_list variable
-    words_list = f.readlines()
-    f.close()
-    
+    words_list = file.readlines()
+    file.close()
     # split the words list by the space
-    words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
+    words_list = words_list[0].split(' ')
 
     # select a random word from list
-    secret_word = random.choice(words_list)
+    secret_word = random.choice(words_list) #pylint: disable=redefined-outer-name
     return secret_word
 
-def is_word_guessed(secret_word, letters_guessed):
+def is_word_guessed(secret_word, letters_guessed): #pylint: disable=redefined-outer-name
     '''
     A function that checks if all the letters of the secret word have been guessed.
     Loop through the secret_word and see if letters in secret_word are in letters_guessed
         - Return true if  all letters are in letters_guessed, meaning word is guessed
-        - Return false if all letters not in 
-
+        - Return false if all letters not in
     Args:
         secret_word (string): the random word the user is trying to guess.
         letters_guessed (list of strings): list of letters that have been guessed so far.
-
-    Returns: 
+    Returns:
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
-    # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
+    # Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
     is_letter_guessed = True
 
     # loop through each letter of the secret word
-    while (is_letter_guessed):
-        for letter in secret_word: 
+    while is_letter_guessed:
+        for letter in secret_word:
             # if letter is found in the letters guessed, continue the while loop
             if letter in letters_guessed:
                 is_letter_guessed = True
@@ -52,27 +49,24 @@ def is_word_guessed(secret_word, letters_guessed):
         # If each letter is found, return true to the function
         return True
 
-def get_guessed_word(secret_word, letters_guessed):
+def get_guessed_word(secret_word, letters_guessed): #pylint: disable=redefined-outer-name
     '''
-    A function that is used to get a string showing the letters guessed so far in the secret word and underscores 
+    A function that is used to get a string showing the letters
+    guessed so far in the secret word and underscores
     for letters that have not been guessed yet.
 
 
-    Args: 
+    Args:
         secret_word (string): the random word the user is trying to guess.
         letters_guessed (list of strings): list of letters that have been guessed so far.
 
-    Returns: 
-        string: letters and underscores.  For letters in the word that the user has guessed correctly, the 
-        string should contain the letter at the correct position.  For letters in the word that the user has 
-        not yet guessed, shown an _ (underscore) instead.
+    Returns:
+        string: letters and underscores.  For letters in the word that the user has
+        guessed correctly, the string should contain the letter at the correct position.
+        For letters in the word that the user has not yet guessed, shown an _ (underscore) instead.
     '''
-
-    #TODO: Loop through the letters in secret word and build a string that shows the letters that have 
-    # been guessed correctly so far that are saved in letters_guessed and underscores for 
-    # the letters that have not been guessed yet
     word_status = ''
-    
+
     # loop through each letter in the secret word
     for letter in secret_word:
         # if the letter exists in the letters guessed list, add that letter to the empty string
@@ -81,11 +75,9 @@ def get_guessed_word(secret_word, letters_guessed):
         else:
             # if it does not exist, replace it with the _
             word_status += '_'
-    return(word_status)
-            
+    return word_status
 
-
-def is_guess_in_word(guess, secret_word):
+def is_guess_in_word(guess, secret_word): #pylint: disable=redefined-outer-name
     '''
     A function to check if the guessed letter is in the secret word
 
@@ -97,13 +89,12 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
 
     '''
-    #TODO: check if the letter guess is in the secret word
+    #check if the letter guess is in the secret word
     if guess in secret_word:
         print("Correct guess!\n")
         return True
-    else:
-        print("Incorrect guess!\n")
-        return False
+    print("Incorrect guess!\n")
+    return False
 
 # function to restart game
 def restart_game():
@@ -113,11 +104,9 @@ def restart_game():
         if no: end the game
 
     Args:
-        none: 
-    
+        none
     Returns:
         A boolean that would end the game
-
     '''
 
     # prompt if user wants to play again
@@ -125,20 +114,19 @@ def restart_game():
     # if yes, clear the console, and call following functions to restart the game
     if play_again == "yes":
         os.system('clear')
-        secret_word = load_word()
+        secret_word = load_word() #pylint: disable=redefined-outer-name
         spaceman(secret_word)
         # If user chooses to not continue, call stack returns here and returns false to end game
         return False
-    else:
-        # if no, return false to end the game
-        return False
+    # if no, return false to end the game
+    return False
 
 # function to draw the spaceman figure
 def ascii_art(number_incorrect):
     '''
-    creates a dictionary containing strings with ascii_art 
+    creates a dictionary containing strings with ascii_art
 
-    Args: 
+    Args:
         number_incorrect: an integer that represents the number of incorrect guesses
 
     Returns:
@@ -160,7 +148,7 @@ def ascii_art(number_incorrect):
     return spaceman_drawing[number_incorrect]
 
 
-def spaceman(secret_word):
+def spaceman(secret_word): #pylint: disable=redefined-outer-name
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
 
@@ -173,7 +161,7 @@ def spaceman(secret_word):
     rounds = 1
     number_incorrect = 0
 
-    #TODO: show the player information about the game according to the project spec
+    #show the player information about the game according to the project spec
     os.system("clear")
     print("Welcome to Spaceman!")
 
@@ -186,37 +174,36 @@ def spaceman(secret_word):
         # end the game
         if play_time == 'no':
             return
-        else:
-            # clear the console and start game
-            os.system('clear')
+        # clear the console and start game
+        os.system('clear')
     else:
         # if user opts for no instructions, clear the console and start game
         os.system('clear')
 
-    #TODO: Ask the player to guess one letter per round and check that it is only one letter
+    #Ask the player to guess one letter per round and check that it is only one letter
 
     # continue while guesses are greater than 0
-    while (guesses > 0):
+    while guesses > 0:
         print(f"\nRound {rounds}\nYou have {guesses} guesses left!")
         user_input = True
 
         # evaluate validity of guess
         while user_input:
-            guess = input(f"Input your guess here: ")
+            guess = input("Input your guess here: ")
             # if user guess is not a letter or is more than one character, reprompt
             if not guess.isalpha() or len(guess) > 1:
                 print('\nInvalid guess, try again!')
             # if letter has been guessed, reprompt user
             elif guess in letters_guessed:
                 print('\nLetter already guessed!')
-            # if letter has not, add letter to the letters_guessed string, and stop the loop/continue game
+            # add letter to the letters_guessed string, and stop the loop/continue game
             else:
                 letters_guessed += guess
                 user_input = False
         os.system('clear')
         print(f"Letters guessed so far: {letters_guessed}\n")
-        
-    #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+
+    #Check if the guessed letter is in the secret or not and give the player feedback
         # if guess is not in secret word
         if not is_guess_in_word(guess, secret_word):
             # decrease guesses by 1
@@ -229,18 +216,17 @@ def spaceman(secret_word):
             # if correct, print nothing for ascii art
             print(ascii_art(number_incorrect))
 
-    #TODO: show the guessed word so far
+    # Show the guessed word so far
         # display the current guessed word and blank spaces
         print(get_guessed_word(secret_word, letters_guessed))
 
-    #TODO: check if the game has been won or lost
-        if (is_word_guessed(secret_word, letters_guessed)):
+    # Check if the game has been won or lost
+        if is_word_guessed(secret_word, letters_guessed):
             print(f"\nCongrats! You completed the word with {guesses} guesses remaining. The word was '{secret_word}'.")
             # if user chooses to restart, continue. Else end game
-            if (restart_game()):
+            if restart_game():
                 continue
-            else:
-                return
+            return
 
         # increment the round value to keep track of rounds
         rounds += 1
